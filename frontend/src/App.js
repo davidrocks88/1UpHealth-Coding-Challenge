@@ -8,7 +8,6 @@ import {
   getAccessToken,
   getHasConnected,
   getSelectedPatientId,
-  getSelectedPatientData,
   getPatientIdList,
 } from "./redux/selectors";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -37,7 +36,6 @@ function App() {
   const hasConnected = useSelector(getHasConnected);
   const access_token = useSelector(getAccessToken);
   const patientId = useSelector(getSelectedPatientId);
-  const patientData = useSelector(getSelectedPatientData);
   const patientList = useSelector(getPatientIdList);
 
   useEffect(() => {
@@ -58,7 +56,7 @@ function App() {
       }
     }
     fetchData();
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     async function fetchData() {
@@ -74,7 +72,7 @@ function App() {
     if (access_token && patientId) {
       fetchData();
     }
-  }, [patientId]);
+  }, [patientId, access_token, dispatch]);
 
   if (!hasConnected) {
     return (
