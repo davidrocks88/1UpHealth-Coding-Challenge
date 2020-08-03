@@ -28,7 +28,6 @@ function openQuickConnect(access_token) {
     system_id +
     "?access_token=" +
     access_token;
-  console.log(url);
   var win = window.open(url, "_blank");
   win.focus();
 }
@@ -40,6 +39,7 @@ function App() {
   const patientId = useSelector(getSelectedPatientId);
   const patientList = useSelector(getPatientIdList);
 
+  // Effecrt for fetching data
   useEffect(() => {
     async function fetchData() {
       try {
@@ -86,6 +86,7 @@ function App() {
     </IconButton>
   );
 
+  // If the user hasn't done the quick connect, don't show data
   if (!hasConnected) {
     return (
       <div>

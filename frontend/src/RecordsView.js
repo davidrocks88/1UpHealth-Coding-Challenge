@@ -7,6 +7,7 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
+// Render resourceType: Patient
 function PatientRecordView({ resource }) {
   return (
     <div>
@@ -24,6 +25,7 @@ function PatientRecordView({ resource }) {
   );
 }
 
+// Render resourceType: RelatedPerson
 function RelatedPersonRecordView({ resource }) {
   return (
     <div>
