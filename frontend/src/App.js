@@ -11,12 +11,14 @@ import {
   getPatientIdList,
 } from "./redux/selectors";
 import MenuItem from "@material-ui/core/MenuItem";
-import InputLabel from '@material-ui/core/InputLabel';
+import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import RecordsView from './RecordsView';
+import RecordsView from "./RecordsView";
+import GitHubIcon from "@material-ui/icons/GitHub";
 
 const system_id = 4706; // Epic demo
 
@@ -74,33 +76,52 @@ function App() {
     }
   }, [patientId, access_token, dispatch]);
 
+  const icon = (
+    <IconButton
+      color="inherit"
+      href="https://github.com/davidrocks88/1UpHealth-Coding-Challenge"
+      target="_blank"
+    >
+      <GitHubIcon />
+    </IconButton>
+  );
+
   if (!hasConnected) {
     return (
       <div>
-        <Button style={{padding: "1em", margin: "2em", borderWidth: ".1em", borderStyle: "solid"}} onClick={() => openQuickConnect(access_token)}>
+        <Button
+          style={{
+            padding: "1em",
+            margin: "2em",
+            borderWidth: ".1em",
+            borderStyle: "solid",
+          }}
+          onClick={() => openQuickConnect(access_token)}
+        >
           <Typography>Quick Connect to Epic Health System</Typography>
         </Button>
+        {icon}
       </div>
     );
   }
 
   const handleChange = (e) => {
-    dispatch(setIndex(e.target.value))
+    dispatch(setIndex(e.target.value));
   };
 
   return (
     <div>
-      <FormControl style={{width: "10em"}}>
+      <FormControl style={{ width: "10em" }}>
         <InputLabel>Patient Id</InputLabel>
-        <Select
-          value={patientId}
-          onChange={handleChange}
-        >
-          {patientList.map((p, i)=><MenuItem value={i}>{p}</MenuItem>)}
+        <Select value={patientId} onChange={handleChange}>
+          {patientList.map((p, i) => (
+            <MenuItem value={i}>{p}</MenuItem>
+          ))}
         </Select>
       </FormControl>
       <br />
       <RecordsView />
+      {icon}
     </div>
   );
 }
