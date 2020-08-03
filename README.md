@@ -23,4 +23,4 @@ The frontend is simply a react app. Running `npm start` in the `/frontend` direc
 First, connect using the Quick Connect button. This will redirect you to the app's main page with data. Select the desired patient ID, then observe how the data is populated from the $everywhere endpoint.
 
 # Example
-See the example at [Example.mov](./Example.mov)
+See the example at [1upmovie.mov](./1upmovie.mov)
